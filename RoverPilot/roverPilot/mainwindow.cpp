@@ -42,30 +42,31 @@ void MainWindow::updateSteerLabel()
     if (ui->steerPosition->value() == FULL_LEFT)
     {
         ui->steerLabel->setText("Full Left");
+        comm->write("1000");
     }
 
     if (ui->steerPosition->value() == GRADUAL_LEFT)
      {
         ui->steerLabel->setText("Gradual Left");
-
+        comm->write("2000");
      }
 
     if (ui->steerPosition->value() == CENTER)
         {
         ui->steerLabel->setText("Center");
-
+        comm->write("3000");
         }
 
     if (ui->steerPosition->value() == GRADUAL_RIGHT)
         {
         ui->steerLabel->setText("Gradual Right");
-
+        comm->write("4000");
         }
 
     if (ui->steerPosition->value() == FULL_RIGHT)
         {
         ui->steerLabel->setText("Full Right");
-
+        comm->write("5000");
         }
 
 
@@ -124,17 +125,33 @@ bool MainWindow::event(QEvent *event)
 
         switch(ke->key())
         {
-        case Qt::Key_Space:
+        case Qt::Key_S:
             stop();
             break;
 
-        case Qt::Key_U:
-            ui->speedLevel->setSliderPosition(ui->speedLevel->value() + 1);
-            updateThrottleLabel();
+        case Qt::Key_1:
+            ui->speedLevel->setSliderPosition(1);
+            comm->write("1");
             break;
+
+        case Qt::Key_2:
+                    ui->speedLevel->setSliderPosition(2);
+                    comm->write("1");
+                    break;
+
+        case Qt::Key_3:
+                    ui->speedLevel->setSliderPosition(3);
+                    comm->write("3");
+                    break;
+
+        case Qt::Key_4:
+                    ui->speedLevel->setSliderPosition(4);
+                    comm->write("4");
+                    break;
 
         case Qt::Key_M:
             ui->speedLevel->setSliderPosition(ui->speedLevel->value() - 1);
+            comm->write(ui->speedLabel->text().toStdString().c_str());
             updateThrottleLabel();
             break;
 
