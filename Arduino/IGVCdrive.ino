@@ -10,10 +10,10 @@ Servo steer;//Servo Object for steering Servo
 #define CENTER 90 
 #define DAMPENING_OFFSET 25 // value for softening turns
 #define STOP 96 // value for stopping DC Motor
-#define SPEED_ONE 105 // speed level one
-#define SPEED_TWO 120 // speed level two
-#define SPEED_THREE 160 // speed level there
-#define REVERSE 65 //reverse
+#define SPEED_ONE 80 // speed level one
+#define SPEED_TWO 70 // speed level two
+#define SPEED_THREE 50 // speed level there
+#define REVERSE 110 //reverse
 #define STEER 6 // pin 6 ~PWM
 #define DRIVE 5 // pin 5 ~PWM
 
@@ -21,6 +21,7 @@ void setup() {
   drive.attach(DRIVE); // assign motor to pin 5
   steer.attach(STEER); // assign steer servo to pin 6
   Serial.begin(9600); //open serial port w/ baudrate 9600
+  Serial.setTimeout(5);
 }
 
 
@@ -30,6 +31,7 @@ void loop() {
 
   if (Serial.available()) {
     int num = Serial.parseInt();
+    
     switch (num){
       case 1000:{ //full left
         steer.write(LEFT);
