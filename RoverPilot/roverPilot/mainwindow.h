@@ -5,6 +5,7 @@
 #include <QDebug>
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QKeyEvent>
 
 namespace Ui {
 class MainWindow;
@@ -35,6 +36,10 @@ private slots:
     void updateSteerLabel();
     void updateThrottleLabel();
     void serialOpenClose();
+
+
+protected:
+    bool event(QEvent *event);
 };
 
 #endif // MAINWINDOW_H

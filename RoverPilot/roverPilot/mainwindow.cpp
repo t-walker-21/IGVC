@@ -113,3 +113,44 @@ void MainWindow::serialOpenClose()
         }
     }
 }
+
+
+bool MainWindow::event(QEvent *event)
+{
+    if (!event || event->type() != QEvent::KeyPress)
+            return QMainWindow::event(event);
+
+        QKeyEvent* ke = static_cast<QKeyEvent*>(event);
+
+        switch(ke->key())
+        {
+        case Qt::Key_Space:
+            stop();
+            break;
+
+        case Qt::Key_U:
+            ui->speedLevel->setSliderPosition(ui->speedLevel->value() + 1);
+            updateThrottleLabel();
+            break;
+
+        case Qt::Key_M:
+            ui->speedLevel->setSliderPosition(ui->speedLevel->value() - 1);
+            updateThrottleLabel();
+            break;
+
+
+        case Qt::Key_A:
+            ui->steerPosition->setSliderPosition(ui->steerPosition->value() - 1);
+            updateSteerLabel();
+            break;
+
+        case Qt::Key_F:
+            ui->steerPosition->setSliderPosition(ui->steerPosition->value() + 1);
+            updateSteerLabel();
+            break;
+
+
+        }
+
+        return true;
+}
