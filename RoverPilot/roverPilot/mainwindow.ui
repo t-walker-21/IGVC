@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>420</width>
+    <width>557</width>
     <height>358</height>
    </rect>
   </property>
@@ -104,13 +104,23 @@
      <string>Open Serial Port</string>
     </property>
    </widget>
+   <widget class="QLineEdit" name="comPortName">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>270</y>
+      <width>113</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>420</width>
+     <width>557</width>
      <height>19</height>
     </rect>
    </property>

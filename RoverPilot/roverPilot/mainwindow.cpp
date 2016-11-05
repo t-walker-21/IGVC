@@ -86,13 +86,24 @@ void MainWindow::serialOpenClose()
     if (comm->isOpen()){
         comm->close();
         ui->portClt->setText("Open Port");
+        qDebug() << "Closing serial port\n\n";
     }
 
     else{
-        if(comm->open(QIODevice::ReadWrite))
+        if (ui->comPortName->text() == "default")
+        {
+            comm->setPortName("/dev/ttyAMA0");
+        }
+
+        else
+        {
+            comm->setPortName(ui->comPortName->text());
+        }
+
+        if(comm->open(QIODevice::ReadWrite)) //attempt to open port
         {
             ui->portClt->setText("Close Port");
-            qDebug() << "could not open serial port\n";
+            qDebug() << "Successfully opened serial port\n";
         }
 
         else
